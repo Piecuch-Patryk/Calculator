@@ -3,34 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Calculator javaScript</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Calculator - javaScript</h1>
-    <section class="calc-wrap">
-        <div>
+    <section class="container p-3 text-center calc-wrap">
+        <h1 class="p-3 text-light">Calculator - javaScript</h1>
+        <div class="row d-flex justify-content-center">
             <!-- clear and clear all buttons -->
-            <input class="functional-btn" type="button" value="C"><input class="functional-btn" type="button" value="CA"><input class="calc-result" type="text" readonly>
+            <input class="btn btn-sm btn-danger my-1 functional-btn" type="button" value="C"><input class="btn btn-sm btn-danger m-1 functional-btn" type="button" value="CA"><input class="my-1 text-right calc-result" type="text" readonly>
         </div>
-        <div>
+        <div class="row d-flex justify-content-center">
             <!-- 7-9 digits and divide operator -->
-            <input class="digit-btn" type="button" value="7"><input class="digit-btn" type="button" value="8"><input class="digit-btn" type="button" value="9"><input class="math-operator" type="button" value="/">
+            <input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="7"><input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="8"><input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="9"><input class="btn btn-primary m-1 px-3 input-size math-operator" type="button" value="/">
         </div>
-        <div>
+        <div class="row d-flex justify-content-center">
             <!-- 4-6 digits and multiplication operator -->
-            <input class="digit-btn" type="button" value="4"><input class="digit-btn" type="button" value="5"><input class="digit-btn" type="button" value="6"><input class="math-operator" type="button" value="*">
+            <input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="4"><input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="5"><input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="6"><input class="btn btn-primary m-1 px-3 input-size math-operator" type="button" value="*">
         </div>
-        <div>
+        <div class="row d-flex justify-content-center">
             <!-- 1-3 digits and substraction operator -->
-            <input class="digit-btn" type="button" value="1"><input class="digit-btn" type="button" value="2"><input class="digit-btn" type="button" value="3"><input class="math-operator" type="button" value="-">
+            <input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="1"><input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="2"><input class="btn btn btn-info m-1 px-3 input-size digit-btn" type="button" value="3"><input class="btn btn-primary m-1 px-3 input-size math-operator" type="button" value="-">
         </div>
-        <div>
+        <div class="row d-flex justify-content-center">
             <!-- equal operator -->
             <!-- fraction operator -->
             <!-- addition operator -->
-            <input class="digit-btn" type="button" value="0"><input class="math-operator" type="button" value="."><input class="math-operator" type="button" value="+"><input class="math-operator equal-btn" type="button" value="=">
+            <input class="btn btn-info m-1 px-3 input-size digit-btn" type="button" value="0"><input class="btn btn-primary m-1 px-3 input-size math-operator" type="button" value="."><input class="btn btn-primary m-1 px-3 input-size math-operator" type="button" value="+"><input class="btn btn-success m-1 px-3 input-size math-operator equal-btn" type="button" value="=">
         </div>
     </section>
 
