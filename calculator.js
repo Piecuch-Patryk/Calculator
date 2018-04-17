@@ -30,7 +30,8 @@ function countResult(op) {
     
     // DO NOT DIVIDE BY ZERO!!
     if (secondNum === 0 && currentOperator === '/') {
-        const error = 'DON\'T DIVIDE BY ZERO!!';
+        const error = 'DON\'T DIVIDE BY ZERO!!',
+              outputField = document.querySelector('.calc-result').classList.add('error');
         showResult(error);
         return;
     }
@@ -130,13 +131,17 @@ function whatClicked(e) {
     }
     // clear last digit btn; ignore if nothing to clear;
     if (currentEl === 'C' && !checkResultValue()) {
-        if (!isNaN(resultField.value)) {
+        // check for error class;
+        if (!resultField.classList.contains('error')) {
+            // delete one character a time;
             // clear digits and fractals;
             let lastToRemove = resultField.value;
             resultField.value = lastToRemove.substring(0, lastToRemove.length - 1);
         } else {
             // clear error message;
             resultField.value = '';
+            // delete error class;
+            resultField.classList.remove('error');
             newNumber = '';
             currentOperator = '';
             fractionFlag = true;
