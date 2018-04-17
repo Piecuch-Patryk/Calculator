@@ -3,6 +3,7 @@ let newNumber = '';
 // total;
 let total = '';
 let currentOperator = '';
+// prevent use fraction twice;
 let fractionFlag = true;
 
 
@@ -14,49 +15,47 @@ function showResult(num) {
     newNumber = '';
     currentOperator = '';
     fractionFlag = true;
-    document.querySelector('.activeOperator').classList.remove('activeOperator');
 }
 
 
 // count result;
 function countResult(op) {
-    const output = document.querySelector('.calc-result').value;
-    const secNum = Number(output);
-    newNumber = Number(newNumber);
+    const output = document.querySelector('.calc-result').value,
+        firstNum = Number(output.split(op)[0]),
+        secondNum = Number(output.split(op)[1]);
+    
+    
+    
+    console.log(firstNum + op + secondNum);
+    
     // DO NOT DIVIDE BY ZERO!!
-    if (secNum === 0 && currentOperator === '/') {
+    if (secondNum === 0 && currentOperator === '/') {
         const error = 'DON\'T DIVIDE BY ZERO!!';
         showResult(error);
         return;
     }
     switch (op) {
         case '+':
-            total = newNumber + secNum;
+            total = firstNum + secondNum;
             break;
         case '-':
-            total = newNumber - secNum;
+            total = firstNum - secondNum;
             break;
         case '*':
-            total = newNumber * secNum;
+            total = firstNum * secondNum;
             break;
         case '/':
-            total = newNumber / secNum;
+            total = firstNum / secondNum;
             break;
     }
     showResult(total);
 }
-// current operator; set bgc for current operator button;
-function activeOperator(e) {
-    e.target.classList.add('activeOperator');
-}
-
-
 // reset output;
-function resetOutput() {
+function resetOutput(operator) {
     const output = document.querySelector('.calc-result');
     if (newNumber === '') {
         newNumber = output.value;
-        output.value = '';
+        output.value += operator;
     } else {
         return;
     }
@@ -96,17 +95,8 @@ function whatClicked(e) {
         if (checkResultValue()) {
             return;
         }
-        if (checkResultValue() && newNumber != '') {
-            // no dogits in result field output;
-            currentOperator = currentEl;
-            activeOperator(e);
-            resetOutput(currentEl);
-        } else {
-            // at least one digit exist in result field output;
-            currentOperator = currentEl;
-            activeOperator(e);
-            resetOutput(currentEl);
-        }
+        currentOperator = currentEl;
+        resetOutput(currentEl);
     }
     // fraction operator;
     if (currentEl === '.' && !checkResultValue()) {
@@ -133,9 +123,6 @@ function whatClicked(e) {
     }
     // clear all btn; RESET Calculator;
     if (currentEl === 'CA') {
-        if (currentOperator != '') {
-            document.querySelector('.activeOperator').classList.remove('activeOperator');
-        }
         e.target.nextSibling.value = '';
         newNumber = '';
         currentOperator = '';
@@ -145,7 +132,6 @@ function whatClicked(e) {
     if (currentEl === 'C' && !checkResultValue()) {
         if (!isNaN(resultField.value)) {
             // clear digits and fractals;
-            console.log(isNaN(resultField.value));
             let lastToRemove = resultField.value;
             resultField.value = lastToRemove.substring(0, lastToRemove.length - 1);
         } else {
@@ -156,12 +142,7 @@ function whatClicked(e) {
             fractionFlag = true;
         }
     }
-    if (currentEl === 'C' && currentOperator != '') {
-        document.querySelector('.activeOperator').classList.remove('activeOperator');
-    }
 }
-
-
 
 /*
 listeners
